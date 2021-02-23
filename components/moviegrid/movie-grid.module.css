@@ -1,0 +1,24 @@
+.paper1 {
+    height: 12rem;
+    display: flex;
+    align-items: space-between;
+    flex-direction: column;
+    position: relative;
+}
+
+.button {
+    width: 5rem;
+}
+
+.button-box {
+
+}
+@media (max-width: 768px) {
+    .typography {
+      font-size: 8px;
+    }
+  }
+
+.typography {
+    font-size: 12px;
+}
