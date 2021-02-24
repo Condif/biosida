@@ -1,0 +1,6 @@
+.eventSeatIconSelected{
+    color: green;
+}
+.eventSeatIcon:hover {
+    color: rgba(0, 128, 0, 0.432);
+}

@@ -12,8 +12,9 @@ export default function Index() {
         justifyContent="flex-end"
         display="flex"
         alignItems="center"
+        
     >
-        <Box mr={3}>
+        <Box mr={3} >
         <Link href="/"> <span  className={"material-icons " + styles.houseIcon}>other_houses</span>
         </Link> 
         </Box>

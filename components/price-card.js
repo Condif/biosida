@@ -36,7 +36,7 @@ const PriceCard = ({ priceCardAnchor }) => {
           ></Box>
         </Grid>
         <Grid item>
-          {priceCardAnchor === "time_and_place" ? (
+          {priceCardAnchor === "time_and_date" ? (
             <Box
               borderRadius="50%"
               height="2rem"
@@ -53,7 +53,7 @@ const PriceCard = ({ priceCardAnchor }) => {
           )}
         </Grid>
         <Grid item>
-          {priceCardAnchor === "user_form" ? (
+          {priceCardAnchor === "userinformationstep" ? (
             <Box
               borderRadius="50%"
               height="2rem"
@@ -97,26 +97,28 @@ const PriceCard = ({ priceCardAnchor }) => {
               </Typography>
             </Box>
           </Box>
-          <Box display="flex" ml={2} flexDirection="column" mb={1}>
-            <Box display="flex" justifyContent="space-between">
-              <Box ml={3}>
-                <Typography variant="caption">Valt datum</Typography>
+          {priceCardAnchor !== "time_and_date" && (
+            <Box display="flex" ml={2} flexDirection="column" mb={1}>
+              <Box display="flex" justifyContent="space-between">
+                <Box ml={3}>
+                  <Typography variant="caption">Valt datum</Typography>
+                </Box>
+                <Box mr={3}>
+                  <Typography variant="caption">{booking.date}</Typography>
+                </Box>
               </Box>
-              <Box mr={3}>
-                <Typography variant="caption">{booking.date}</Typography>
+              <Box display="flex" justifyContent="space-between">
+                <Box ml={3}>
+                  <Typography variant="caption">Vald föreställning</Typography>
+                </Box>
+                <Box mr={3}>
+                  <Typography variant="caption">
+                    {booking.start_time + " - " + booking.end_time}
+                  </Typography>
+                </Box>
               </Box>
             </Box>
-            <Box display="flex" justifyContent="space-between">
-              <Box ml={3}>
-                <Typography variant="caption">Vald föreställning</Typography>
-              </Box>
-              <Box mr={3}>
-                <Typography variant="caption">
-                  {booking.start_time + " - " + booking.end_time}
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
+          )}
         </Box>
         <Box display="flex" justifyContent="space-between" width="80%" mb={1}>
           <Box pl={2}>

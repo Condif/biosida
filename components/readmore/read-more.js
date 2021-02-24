@@ -28,7 +28,7 @@ const ReadMore = ({ readMoreInformation }) => {
           color="primary"
           component={Link}
           naked
-          href="/timeandplace"
+          href="/timeanddate"
         >
           Boka
         </Button>

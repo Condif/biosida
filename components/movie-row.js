@@ -6,10 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import styles from "./moviegrid/movie-grid.module.css";
 import ReadMore from "./readmore/read-more";
-import Link from "../src/Link";
 import {UserContext} from "../context/userContext"
+import { useRouter } from 'next/router'
 
 const MovieRow = (props) => {
+  const router = useRouter()
   const {
     movies,
     readMore,
@@ -31,6 +32,7 @@ const MovieRow = (props) => {
   const handleGoToBooking = (movie) => {
     const temp = {...movie}
     setChosenMovie(temp)
+    router.push("/timeanddate")
   }
 
   return (
@@ -39,9 +41,9 @@ const MovieRow = (props) => {
         .slice(movieSlicingStartIndex, movieSlicingEndIndex)
         .map((movie, index) => {
           return (
-            <Grid item xs={6} sm={4} md={3} key={index} mb={4}>
-              <Paper className={styles.paper1}>
-                <Box height="3rem">
+            <Grid item xs={6} sm={4} md={3} key={index} mb={4} >
+              <Paper  className={styles.paper1} style={{backgroundColor: "#161A22"}}>
+                <Box height="3rem" >
                   <Typography
                     className={styles.typography}
                     variant={"h5"}
@@ -62,9 +64,6 @@ const MovieRow = (props) => {
                     variant="contained"
                     color="primary"
                     onClick={() => handleGoToBooking(movie)}
-                    component={Link}
-                    naked
-                    href="/timeandplace"
                   >
                     Boka
                   </Button>

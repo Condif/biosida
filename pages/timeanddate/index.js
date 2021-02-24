@@ -1,14 +1,15 @@
 import React, { useContext, useEffect } from "react";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import { Box, Button } from "@material-ui/core";
 import SimpleListMenu from "components/simple-menu";
 import { UserContext } from "context/userContext";
-import Link from "src/Link";
 import PriceCard from "components/price-card";
+import { useRouter } from 'next/router'
+
 
 export default function TimeAndPlace() {
+  const router = useRouter()
   const { chosenMovie, selectedIndex, setBooking, booking } = useContext(
     UserContext
   );
@@ -22,20 +23,17 @@ export default function TimeAndPlace() {
     tempBooking["start_time"] = tempStartTime;
     tempBooking["end_time"] = tempEndTime;
     setBooking(tempBooking);
+    router.push("/chooseseats")
   };
-
-  useEffect(() => {
-    console.log(booking);
-  }, [booking]);
   return (
     <Container maxWidth="sm" spacing={2}>
-      <PriceCard priceCardAnchor="time_and_place"></PriceCard>
+      <PriceCard priceCardAnchor="time_and_date"></PriceCard>
       <Box>
         <SimpleListMenu menuAnchor="dates" chosenMovie={chosenMovie} />
         <SimpleListMenu menuAnchor="shows" chosenMovie={chosenMovie} />
       </Box>
       <Box display="flex" justifyContent="center">
-        <Button onClick={() => handleNextClick()} component={Link} href={"/chooseseats"}>
+        <Button onClick={() => handleNextClick()}>
           <Typography variant="h5">Nästa</Typography>
         </Button>
       </Box>

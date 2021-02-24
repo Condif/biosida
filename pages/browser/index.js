@@ -10,7 +10,7 @@ export default function Browser(props) {
     setMovies(props.movies)
   }, [])
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" >
       <Box display="flex" justifyContent="center" mt={20}>
         <MovieGrid />
       </Box>
