@@ -6,7 +6,8 @@ const UserContextProvider = (props) => {
   const [movies, setMovies] = useState([]);
   const [chosenMovie, setChosenMovie] = useState({});
   const [booking, setBooking] = useState({});
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [datesIndex, setDatesIndex] = useState(0);
+  const [showTimeIndex, setShowTimeIndex] = useState(0);
   const [selectedSeats, setSelectedSeats] = useState([]);
 
   return (
@@ -18,10 +19,12 @@ const UserContextProvider = (props) => {
         chosenMovie,
         setBooking,
         booking,
-        selectedIndex,
-        setSelectedIndex,
+        showTimeIndex,
+        setShowTimeIndex,
+        datesIndex,
+        setDatesIndex,
         selectedSeats,
-        setSelectedSeats
+        setSelectedSeats,
       }}
     >
       {props.children}

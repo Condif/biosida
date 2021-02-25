@@ -10,16 +10,16 @@ import { useRouter } from 'next/router'
 
 export default function TimeAndPlace() {
   const router = useRouter()
-  const { chosenMovie, selectedIndex, setBooking, booking } = useContext(
+  const { chosenMovie, showTimeIndex, datesIndex, setBooking, booking } = useContext(
     UserContext
   );
   const handleNextClick = () => {
     const tempChosenMovie = { ...chosenMovie };
     const tempBooking = { ...booking };
-    const tempDate = tempChosenMovie.dates?.[selectedIndex];
+    const tempDate = tempChosenMovie.dates?.[datesIndex];
     tempBooking["date"] = tempDate;
-    const tempStartTime = tempChosenMovie.shows?.[selectedIndex].startTime;
-    const tempEndTime = tempChosenMovie.shows?.[selectedIndex].endTime;
+    const tempStartTime = tempChosenMovie.shows?.[showTimeIndex].startTime;
+    const tempEndTime = tempChosenMovie.shows?.[showTimeIndex].endTime;
     tempBooking["start_time"] = tempStartTime;
     tempBooking["end_time"] = tempEndTime;
     setBooking(tempBooking);

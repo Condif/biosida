@@ -5,14 +5,17 @@ import Box from "@material-ui/core/Box";
 import Link from "../../src/Link";
 import { Button, Container, Grid } from "@material-ui/core";
 import { palette } from "@material-ui/system";
+import {handleGoToBooking} from "components/helpers/handle-functions"
+import { useRouter } from 'next/router'
 
-const ReadMore = ({ readMoreInformation }) => {
+const ReadMore = ({ readMoreInformation, setChosenMovie, movie }) => {
+  const router = useRouter()
   return (
     <Grid
       item
       container
       xs
-      style={{ background: "grey", position: "relative" }}
+      style={{ background: "#E9ECF5", position: "relative" }}
     >
       <Box display="flex" flexDirection="row" my={2}>
         <Box mx={2} height="12rem" width="14rem" bgcolor="info.main"></Box>
@@ -26,9 +29,7 @@ const ReadMore = ({ readMoreInformation }) => {
         <Button
           variant="contained"
           color="primary"
-          component={Link}
-          naked
-          href="/timeanddate"
+          onClick={() => handleGoToBooking(movie, setChosenMovie, router)}
         >
           Boka
         </Button>

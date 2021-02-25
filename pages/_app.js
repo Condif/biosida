@@ -18,7 +18,17 @@ export default function MyApp(props) {
     }
   }, []);
 
-  const theme = createMuiTheme();
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: "#90caf9",
+      },
+      secondary: {
+        main: '#f44336',
+      },
+    },
+  });;
+ 
 
   theme.typography.h5 = {
     fontSize: "1.2rem",

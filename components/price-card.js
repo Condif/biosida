@@ -71,7 +71,7 @@ const PriceCard = ({ priceCardAnchor }) => {
         </Grid>
       </Grid>
       {/* Greycard */}
-      <Box
+      {chosenMovie?.title, chosenMovie?.price ? <Box
         display="flex"
         flexDirection="column"
         justifyContent="center"
@@ -79,7 +79,8 @@ const PriceCard = ({ priceCardAnchor }) => {
         style={{ backgroundColor: "#E0E8EA90" }}
         py={3}
       >
-        <Box
+         
+          <Box
           display="flex"
           flexDirection="column"
           justifyContent="space-between"
@@ -87,7 +88,8 @@ const PriceCard = ({ priceCardAnchor }) => {
           borderBottom="0.5px solid black"
           mb={1}
         >
-          <Box display="flex" justifyContent="space-between" mb={1}>
+         
+       <Box display="flex" justifyContent="space-between" mb={1}>
             <Box pl={2}>
               <Typography variant="body2">{chosenMovie.title}</Typography>
             </Box>
@@ -97,7 +99,7 @@ const PriceCard = ({ priceCardAnchor }) => {
               </Typography>
             </Box>
           </Box>
-          {priceCardAnchor !== "time_and_date" && (
+         {priceCardAnchor !== "time_and_date" , booking?.start_time, booking?.end_time &&
             <Box display="flex" ml={2} flexDirection="column" mb={1}>
               <Box display="flex" justifyContent="space-between">
                 <Box ml={3}>
@@ -117,9 +119,28 @@ const PriceCard = ({ priceCardAnchor }) => {
                   </Typography>
                 </Box>
               </Box>
-            </Box>
-          )}
+              {booking?.seats && <Box display="flex" justifyContent="space-between">
+                <Box ml={3}>
+                  <Typography variant="caption">Platser:</Typography>
+                  {" "}
+                  
+                    {booking.seats.map((seat, index) => (
+                      <Typography key={index} variant="caption">
+                          {booking.seats.length !== index + 1 ? seat + ", " : seat}
+                      </Typography>
+                    ))}
+                  
+                </Box>
+                <Box mr={3}>
+                  <Typography variant="caption">
+                    x3
+                  </Typography>
+                </Box>
+              </Box> }
+            </Box>}
+           
         </Box>
+        
         <Box display="flex" justifyContent="space-between" width="80%" mb={1}>
           <Box pl={2}>
             <Typography variant="subtitle2">TOTAL</Typography>
@@ -129,8 +150,8 @@ const PriceCard = ({ priceCardAnchor }) => {
               {chosenMovie.price + " :-"}
             </Typography>
           </Box>
-        </Box>
-      </Box>{" "}
+        </Box> 
+      </Box>  : null}
     </>
   );
 };

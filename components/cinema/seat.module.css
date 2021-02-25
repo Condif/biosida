@@ -1,6 +1,11 @@
-.eventSeatIconSelected{
-    color: green;
+.eventSeatIconSelected {
+  color: green;
 }
 .eventSeatIcon:hover {
-    color: rgba(0, 128, 0, 0.432);
+  color: rgba(0, 128, 0, 0.432);
+  cursor: pointer;
+}
+
+.eventSeatIconSelected {
+  cursor: pointer;
 }

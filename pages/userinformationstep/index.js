@@ -20,22 +20,22 @@ export default function ChooseSeats() {
   const validate = (anchor) => {
     let temp = {};
     if (anchor === "fullname" || anchor === "checkAll") {
-      temp.fullNameHelperText = values.fullName.length >= 4
+      temp.fullNameHelperText = values.fullName?.length >= 4
         ? ""
         : "Ange ditt för och efternamn.";
-      temp.fullName = values.fullName.length >= 4 ? false : true;
+      temp.fullName = values.fullName?.length >= 4 ? false : true;
     }
     if (anchor === "email" || anchor === "checkAll") {
-      temp.emailHelperText = values?.email.length >= 4
+      temp.emailHelperText = values.email?.length >= 4
         ? ""
         : "Ange en email adress.";
-      temp.email = values?.email.length >= 4 ? false : true;
+      temp.email = values.email?.length >= 4 ? false : true;
     }
 
     if (anchor === "mobile" || anchor === "checkAll") {
       temp.mobileHelperText =
-        values.mobile?.length === 0 || values.mobile?.length > 9 ? "" : "Skriv in minst 10 siffror eller lämna fältet tomt";
-      temp.mobile = values.mobile?.length === 0 ? false : true;
+        values.mobile?.length === 0 || values.mobile?.length >= 9 ? "" : "Skriv in minst 10 siffror eller lämna fältet tomt";
+      temp.mobile = values.mobile?.length === 0 || values.mobile?.length >= 9 ? false : true;
     }
 
     setErrors({
@@ -47,14 +47,9 @@ export default function ChooseSeats() {
 
   const handleBookingClick = () => {
     if (validate("checkAll")) {
-      window.alert("testing...");
+      router.push("/receipt")
     }
-    // router.push("/receipt")
   };
-
-  useEffect(() => {
-    console.log(errors);
-  }, [errors]);
 
   return (
     <Container maxWidth="md">

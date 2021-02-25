@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleListMenu(props) {
   const { chosenMovie, menuAnchor } = props;
-  const {booking, selectedIndex, setSelectedIndex} = useContext(UserContext)
+  const {booking, showTimeIndex, datesIndex, setShowTimeIndex, setDatesIndex} = useContext(UserContext)
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -25,7 +25,11 @@ export default function SimpleListMenu(props) {
   };
 
   const handleMenuItemClick = (event, index) => {
-    setSelectedIndex(index);
+    if(menuAnchor === "dates")
+    {setDatesIndex(index)}
+    else {
+      setShowTimeIndex(index)
+    }
     setAnchorEl(null);
   };
 
@@ -46,12 +50,12 @@ export default function SimpleListMenu(props) {
           {menuAnchor === "dates" ?(
             <ListItemText
               primary="Välj datum"
-              secondary={chosenMovie?.dates?.[selectedIndex]}
+              secondary={chosenMovie?.dates?.[datesIndex]}
             />
           ) : (
             <ListItemText
               primary="Välj föreställning"
-              secondary={chosenMovie?.shows?.[selectedIndex]?.startTime + " - " + chosenMovie?.shows?.[selectedIndex]?.endTime }
+              secondary={chosenMovie?.shows?.[showTimeIndex]?.startTime + " - " + chosenMovie?.shows?.[showTimeIndex]?.endTime }
             />
           )}
         </ListItem>
@@ -68,7 +72,7 @@ export default function SimpleListMenu(props) {
               <MenuItem
                 key={date}
                 // disabled={index === 0}
-                selected={index === selectedIndex}
+                selected={index === datesIndex}
                 onClick={(event) => handleMenuItemClick(event, index)}
               >
                 {date}
@@ -78,7 +82,7 @@ export default function SimpleListMenu(props) {
               <MenuItem
                 key={index}
                 // disabled={index === 0}
-                selected={index === selectedIndex}
+                selected={index === showTimeIndex}
                 onClick={(event) => handleMenuItemClick(event, index)}
               >
                 {show.startTime + " - " + show.endTime}

@@ -8,6 +8,7 @@ import styles from "./moviegrid/movie-grid.module.css";
 import ReadMore from "./readmore/read-more";
 import {UserContext} from "../context/userContext"
 import { useRouter } from 'next/router'
+import {handleGoToBooking} from "components/helpers/handle-functions"
 
 const MovieRow = (props) => {
   const router = useRouter()
@@ -29,11 +30,6 @@ const MovieRow = (props) => {
     }
   };
 
-  const handleGoToBooking = (movie) => {
-    const temp = {...movie}
-    setChosenMovie(temp)
-    router.push("/timeanddate")
-  }
 
   return (
     <Grid container maxwidth="lg" spacing={1}>
@@ -42,7 +38,7 @@ const MovieRow = (props) => {
         .map((movie, index) => {
           return (
             <Grid item xs={6} sm={4} md={3} key={index} mb={4} >
-              <Paper  className={styles.paper1} style={{backgroundColor: "#161A22"}}>
+              <Paper  className={styles.paper1} style={{backgroundColor: "#283F49"}}>
                 <Box height="3rem" >
                   <Typography
                     className={styles.typography}
@@ -63,7 +59,7 @@ const MovieRow = (props) => {
                     className={styles.button}
                     variant="contained"
                     color="primary"
-                    onClick={() => handleGoToBooking(movie)}
+                    onClick={() => handleGoToBooking(movie, setChosenMovie, router)}
                   >
                     Boka
                   </Button>
@@ -75,11 +71,11 @@ const MovieRow = (props) => {
             </Grid>
           );
         })}
-      {readMore.map((item, index) => {
+      {movies.map((movie, index) => {
         return (
-          readMoreOpen === item.parentId && (
+          readMoreOpen === movie.id && (
             <Grid key={index} item container xs direction="row" xs={12}>
-              <ReadMore readMoreInformation={item}/>
+              <ReadMore readMoreInformation={movie} setChosenMovie={setChosenMovie} movie={movie}/>
             </Grid>
           )
         );
