@@ -21,10 +21,10 @@ export default function MyApp(props) {
   const theme = createMuiTheme({
     palette: {
       primary: {
-        main: "#90caf9",
+        main: "rgb(144,202,249)",
       },
       secondary: {
-        main: '#f44336',
+        main: '#FFFFFF',
       },
     },
   });;

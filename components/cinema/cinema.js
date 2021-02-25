@@ -20,11 +20,11 @@ export default function Cinema() {
     router.push("/userinformationstep")
   }
   return (
-    <Container maxWidth="md" spacing={2}>
+    <Container maxWidth="md" spacing={2} style={{boxShadow: "5px 5px 5px"}}>
         <Box my={8} style={{backgroundColor: "grey"}} height="1rem" ></Box>
         <Seats/>
-        <Box display="flex" justifyContent="center">
-        <Button onClick={() => handleNextClick()}>
+        <Box fullWidth display="flex" justifyContent="center" style={{background: "#F4F4F4"}}>
+        <Button fullWidth width="100%" disabled={selectedSeats.length === 0} onClick={() => handleNextClick()}>
           <Typography variant="h5">Nästa</Typography>
         </Button>
       </Box>

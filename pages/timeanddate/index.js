@@ -26,14 +26,14 @@ export default function TimeAndPlace() {
     router.push("/chooseseats")
   };
   return (
-    <Container maxWidth="sm" spacing={2}>
+    <Container maxWidth="sm" spacing={2} style={{boxShadow: "5px 5px 5px", padding: "2rem 0 2rem 0"}}>
       <PriceCard priceCardAnchor="time_and_date"></PriceCard>
       <Box>
         <SimpleListMenu menuAnchor="dates" chosenMovie={chosenMovie} />
         <SimpleListMenu menuAnchor="shows" chosenMovie={chosenMovie} />
       </Box>
-      <Box display="flex" justifyContent="center">
-        <Button onClick={() => handleNextClick()}>
+      <Box display="flex" justifyContent="center"  style={{background: "#F4F4F4"}}>
+        <Button fullWidth onClick={() => handleNextClick()}>
           <Typography variant="h5">Nästa</Typography>
         </Button>
       </Box>

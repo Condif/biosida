@@ -7,7 +7,7 @@ import { Button, Container, Grid } from "@material-ui/core";
 import { palette } from "@material-ui/system";
 import { handleGoToBooking } from "components/helpers/handle-functions";
 import { useRouter } from "next/router";
-import Image from 'next/image'
+import Image from "next/image";
 
 const ReadMore = ({ readMoreInformation, setChosenMovie, movie }) => {
   const router = useRouter();
@@ -16,7 +16,11 @@ const ReadMore = ({ readMoreInformation, setChosenMovie, movie }) => {
       item
       container
       xs
-      style={{ background: "#E9ECF5", position: "relative" }}
+      style={{
+        background: "#141414",
+        position: "relative",
+        boxShadow: "5px 5px 5px",
+      }}
     >
       <Box display="flex" flexDirection="row" my={2}>
         <Box mx={2} height="12rem" width="14rem">
@@ -28,7 +32,7 @@ const ReadMore = ({ readMoreInformation, setChosenMovie, movie }) => {
           />
         </Box>
         <Box mt={2} width="30rem">
-          <Typography variant={"body1"} mt={4}>
+          <Typography variant={"body1"} style={{ color: "white" }} mt={4}>
             {readMoreInformation.description}
           </Typography>
         </Box>
@@ -36,7 +40,11 @@ const ReadMore = ({ readMoreInformation, setChosenMovie, movie }) => {
       <Box position="absolute" style={{ bottom: 25, right: 50 }}>
         <Button
           variant="contained"
-          color="primary"
+          style={{
+            background: "none",
+            color: "white",
+            border: "1px solid white",
+          }}
           onClick={() => handleGoToBooking(movie, setChosenMovie, router)}
         >
           Boka
