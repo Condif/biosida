@@ -5,11 +5,12 @@ import Box from "@material-ui/core/Box";
 import Link from "../../src/Link";
 import { Button, Container, Grid } from "@material-ui/core";
 import { palette } from "@material-ui/system";
-import {handleGoToBooking} from "components/helpers/handle-functions"
-import { useRouter } from 'next/router'
+import { handleGoToBooking } from "components/helpers/handle-functions";
+import { useRouter } from "next/router";
+import Image from 'next/image'
 
 const ReadMore = ({ readMoreInformation, setChosenMovie, movie }) => {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <Grid
       item
@@ -18,7 +19,14 @@ const ReadMore = ({ readMoreInformation, setChosenMovie, movie }) => {
       style={{ background: "#E9ECF5", position: "relative" }}
     >
       <Box display="flex" flexDirection="row" my={2}>
-        <Box mx={2} height="12rem" width="14rem" bgcolor="info.main"></Box>
+        <Box mx={2} height="12rem" width="14rem">
+          <Image
+            src="/pirate.jpg"
+            alt="Picture of the author"
+            width={284}
+            height={220}
+          />
+        </Box>
         <Box mt={2} width="30rem">
           <Typography variant={"body1"} mt={4}>
             {readMoreInformation.description}

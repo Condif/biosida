@@ -16,7 +16,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
         </Head>
-        <body style={{backgroundColor: "#161A22"}}>
+        <body style={{backgroundColor: "#141414"}}>
           <Main />
           <NextScript />
         </body>

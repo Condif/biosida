@@ -4,8 +4,12 @@ import PriceCard from "components/price-card";
 import UserForm from "components/userForm";
 import { Box, Button, Typography } from "@material-ui/core";
 import { useRouter } from "next/router";
+import { UserContext } from "context/userContext";
 
-export default function ChooseSeats() {
+export default function UserInformationStep() {
+  const { setBooking, booking } = useContext(
+    UserContext
+  );
   const router = useRouter();
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({});
@@ -31,11 +35,11 @@ export default function ChooseSeats() {
         : "Ange en email adress.";
       temp.email = values.email?.length >= 4 ? false : true;
     }
-
+    console.log(values.mobile)
     if (anchor === "mobile" || anchor === "checkAll") {
       temp.mobileHelperText =
-        values.mobile?.length === 0 || values.mobile?.length >= 9 ? "" : "Skriv in minst 10 siffror eller lämna fältet tomt";
-      temp.mobile = values.mobile?.length === 0 || values.mobile?.length >= 9 ? false : true;
+        !values.mobile || values.mobile?.length >= 9 ? "" : "Skriv in minst 9 siffror eller lämna fältet tomt";
+      temp.mobile = !values.mobile || values.mobile?.length >= 9 ? false : true;
     }
 
     setErrors({
@@ -47,6 +51,15 @@ export default function ChooseSeats() {
 
   const handleBookingClick = () => {
     if (validate("checkAll")) {
+      const tempBooking = {...booking}
+      const tempValues = {...values}
+      
+      tempBooking["fullName"] = tempValues.fullName;
+      tempBooking["email"] = tempValues.email;
+      tempBooking["mobile"] = tempValues.mobile || "";
+
+    
+      setBooking(tempBooking);
       router.push("/receipt")
     }
   };
