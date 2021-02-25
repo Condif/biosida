@@ -175,7 +175,7 @@ const PriceCard = ({ priceCardAnchor }) => {
               </Box>
               <Box pr={2}>
                 <Typography variant="subtitle2">
-                  {priceCardAnchor === "userinformationstep"
+                  {priceCardAnchor === "userinformationstep" || priceCardAnchor === "receipt"
                     ? chosenMovie.price * booking.seats?.length + " :-"
                     : chosenMovie.price + " :-"}
                 </Typography>
