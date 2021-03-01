@@ -5,7 +5,7 @@ import { UserContext } from "context/userContext";
 import Seat from "components/cinema/seat";
 
 export default function Cinema() {
-  const { chosenMovie, selectedIndex, setBooking, booking, selectedSeats, setSelectedSeats } = useContext(
+  const { selectedSeats, setSelectedSeats } = useContext(
     UserContext
   );
   const [seats, setSeats] = useState([
@@ -50,9 +50,6 @@ export default function Cinema() {
     "R4-S10",
   ]);
 
-  useEffect(() => {
-    console.log(selectedSeats);
-  }, [selectedSeats])
   return (
     <Container maxWidth="md" spacing={2}>
       <Box

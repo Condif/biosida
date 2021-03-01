@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { UserContext } from "context/userContext";
 
 export default function UserInformationStep() {
-  const { setBooking, booking } = useContext(UserContext);
+  const { setBooking, booking, chosenMovie } = useContext(UserContext);
   const router = useRouter();
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({});
@@ -31,7 +31,6 @@ export default function UserInformationStep() {
         values.email?.length >= 4 ? "" : "Ange en email adress.";
       temp.email = values.email?.length >= 4 ? false : true;
     }
-    console.log(values.mobile);
     if (anchor === "mobile" || anchor === "checkAll") {
       temp.mobileHelperText =
         !values.mobile || values.mobile?.length >= 9
@@ -55,14 +54,40 @@ export default function UserInformationStep() {
       tempBooking["fullName"] = tempValues.fullName;
       tempBooking["email"] = tempValues.email;
       tempBooking["mobile"] = tempValues.mobile || "";
-
+      tempBooking["movie_id"] = chosenMovie.id;
       setBooking(tempBooking);
-      router.push("/receipt");
+      setBookingAdded(true);
     }
   };
 
+  const [bookingAdded, setBookingAdded] = useState(false);
+
+  useEffect(() => {
+    if (bookingAdded) {
+      addBookingToApi();
+      router.push("/receipt")
+    }
+  }, [bookingAdded]);
+  const addBookingToApi = async () => {
+    await fetch("http://localhost:4005/booking/", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(booking),
+      
+    })
+      .then((res) => {
+        res.json()
+      })
+  };
+
   return (
-    <Container maxWidth="md" style={{boxShadow: "5px 5px 5px", padding: "2rem 0 2rem 0"}}>
+    <Container
+      maxWidth="md"
+      style={{ boxShadow: "5px 5px 5px", padding: "2rem 0 2rem 0" }}
+    >
       <Container maxWidth="sm" spacing={2}>
         <PriceCard priceCardAnchor="userinformationstep"></PriceCard>
         <UserForm

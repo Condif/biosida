@@ -19,7 +19,7 @@ export default function Index() {
         </Box>
         <Box text-align="center" display="flex" flexDirection="column">
           <Button style={{color: "white", border: "white solid 1px", margin: "1rem"}} size="large" component={Link} naked href="/browser" width="30rem">Börja din bokning</Button>
-          <Button style={{color: "white"}} size="small" component={Link} naked href="/cancel">Avboka</Button>
+          <Button style={{color: "white"}} size="small" component={Link} naked href="/cancelorder">Avboka</Button>
         </Box>
       </Box>
     </div>

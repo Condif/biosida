@@ -74,7 +74,7 @@ const PriceCard = ({ priceCardAnchor }) => {
       )}
       {/* Greycard */}
       {
-        (chosenMovie?.title,
+        (chosenMovie?.title &&
         chosenMovie?.price ? (
           <Box
             display="flex"
@@ -103,8 +103,8 @@ const PriceCard = ({ priceCardAnchor }) => {
                 </Box>
               </Box>
               {
-                (priceCardAnchor !== "time_and_date",
-                booking?.start_time,
+                (priceCardAnchor !== "time_and_date" &&
+                booking?.start_time &&
                 booking?.end_time && (
                   <Box display="flex" ml={2} flexDirection="column" mb={1}>
                     <Box display="flex" justifyContent="space-between">
